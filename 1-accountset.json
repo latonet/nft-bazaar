@@ -1,0 +1,5 @@
+{
+  "TransactionType": "AccountSet",
+  "Account": "rIssuingAccount...",
+  "SetFlag": 8
+}

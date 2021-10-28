@@ -1,0 +1,15 @@
+{
+    "command": "ripple_path_find",
+    "source_account": "rwietsevLFg8XSmG3bEZzFein1g8RBqWDZ",
+    "send_max": {
+        "value": "10",
+        "currency": "EUR",
+        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"
+    },
+    "destination_account": "rwietsevLFg8XSmG3bEZzFein1g8RBqWDZ",
+    "destination_amount": {
+        "value": "-1",
+        "currency": "USD",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+    }
+}

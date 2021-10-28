@@ -1,0 +1,6 @@
+{ 
+  "TransactionType": "AccountSet",
+  "Account" : "rIssuingAccount...",
+  "Fee": "12",
+  "SetFlag": 4
+}

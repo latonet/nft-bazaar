@@ -1,0 +1,84 @@
+{
+  "result": {
+    "alternatives": [
+      {
+        "destination_amount": {
+          "currency": "USD",
+          "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+          "value": "7.221946976308897"
+        },
+        "paths_canonical": [],
+        "paths_computed": [
+          [
+            {
+              "currency": "USD",
+              "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+              "type": 48
+            },
+            {
+              "currency": "USD",
+              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+              "type": 48
+            }
+          ],
+          [
+            {
+              "currency": "XRP",
+              "type": 16
+            },
+            {
+              "currency": "USD",
+              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+              "type": 48
+            }
+          ],
+          [
+            {
+              "currency": "XRP",
+              "type": 16
+            },
+            {
+              "currency": "USD",
+              "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 48
+            },
+            {
+              "account": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 1
+            },
+            {
+              "account": "rM8T5Zjn1vkgkLQub4LxGA6pjF2toAaPZr",
+              "type": 1
+            }
+          ]
+        ],
+        "source_amount": {
+          "currency": "EUR",
+          "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+          "value": "6.236052693188088"
+        }
+      }
+    ],
+    "destination_account": "rwietsevLFg8XSmG3bEZzFein1g8RBqWDZ",
+    "destination_amount": {
+      "currency": "USD",
+      "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "-1"
+    },
+    "destination_currencies": [
+      "021D001703B37004416E205852504C204E46543F",
+      "EUR",
+      "XRP",
+      "CX1",
+      "TAN",
+      "CSC",
+      "WIE",
+      "USD"
+    ],
+    "full_reply": true,
+    "source_account": "rwietsevLFg8XSmG3bEZzFein1g8RBqWDZ",
+    "status": "success"
+  },
+  "status": "success",
+  "type": "response"
+}

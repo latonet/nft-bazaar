@@ -10,6 +10,10 @@ This project will enable some creators not currently well represented in existin
 
 The marketplace intends to develop a sidechain on XRPL for users to mint, buy and sell NFTs.
 
+IPFS can be used to store the NFT asset such as an image item and metadata.
+
+3 accounts will be used on the XRPL Testnet for developing the marketpplace, an Issuer, Distributor and Purchaser. The Issuer will create and send the NFT to the Distributor via the Distributor's trustline. The Issuer will create a single NFT referencing a single asset (referencing the item and metadata). When the Issuer is finished creating the NFT, it will then "blackhole" itself to make further NFT issuance impossible. The Distributor now holds the NFT and will create an offer to sell it on the XRPL DEX. The Purchaser will then offer to buy it, and when the offers match, the Purchaser will exchange XRP (currency) for the NFT.
+
 Our team has considerable experience in developing websites and apps and we're excited to bring this experience to the NFT marketplace. Our niche NFT assets will target creators and their buyers not currently well catered for.
 
 In future, we will open our XRPL sidechain to users other than our marketplaces, thereby creating a trusted data store of mainstream and niche NFTs.

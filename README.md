@@ -1,5 +1,7 @@
 Please keep visiting our project page as it will be updated regularly.
 
+Much of the code is on an ongoing test basis and not suitable for live use, please be free to modify as needed. 
+
 # nft-bazaar - an NFT markeplace
 
 An NFT Marketplace for unique and exclusive niche NFT assets and to offer an alternative NFT marketplace to creators, in not only mainstream but also niche areas. Many of the assets on offer in our marketplace will be unique and exclusive. 

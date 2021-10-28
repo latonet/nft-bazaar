@@ -1,0 +1,77 @@
+Before the NFT is issued, the Distributor account must trust the Issuer account so that the Issuer can send its issued currency to the Distributor.
+
+{
+    "TransactionType": "TrustSet",
+    "Account": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa", // Distributor account
+    "LimitAmount": {
+      "currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", // The non-standard currency code -- the SHA1 digest of the IPFS pointer
+      "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", // Issuer account
+      "value": "1e-15" // Minimum unit for issued currency precision
+    }
+}
+
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "TrustSet", "Account": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa", "LimitAmount": {"currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "value": "1e-15"} }'
+
+Next, the Issuer is going to actually create a unit of currency by sending it to the Distributor account:
+
+{
+    "TransactionType": "Payment",
+    "Account": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", // Issuer account
+    "Destination": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa", // Distributor account
+    "Memos": [
+        {
+            "Memo": {
+                "MemoData": "4e4654206f626a656374204950465320686173683a0a516d55376a5939706e78666d7a4c526a68533837577a56784a654c557a3252684d34334a6d743973536f316a534c0a4e4654206d65746164617461204950465320686173683a0a516d636336696746776b5373346a4b7947424e455839565471553353793758366270433342445743756531656a44" // IPFS asset pointers in HEX
+            }
+        }
+    ],
+    "Amount": { "currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "value": "1e-15" }
+}
+
+
+Set DefaultRipple on issuing account (P2P sending without Trustlines):
+
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "Payment", "Account": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "Destination": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa", "Memos": [ { "Memo": { "MemoData": "4e4654206f626a656374204950465320686173683a0a516d55376a5939706e78666d7a4c526a68533837577a56784a654c557a3252684d34334a6d743973536f316a534c0a4e4654206d65746164617461204950465320686173683a0a516d636336696746776b5373346a4b7947424e455839565471553353793758366270433342445743756531656a44"}}], "Amount": { "currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "value": "1e-15" } }'
+
+Set RegularKey to Blackhole account:
+
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "AccountSet","Account" : "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb","SetFlag": 8}'
+
+Remove use of MasterKey for the issuing account:
+
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"Flags": 0, "TransactionType": "SetRegularKey", "Account": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "RegularKey": "rrrrrrrrrrrrrrrrrrrrBZbvji"}'
+
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "AccountSet","Account" : "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "SetFlag": 4}'
+
+Distributor account offers NFT for sale (against XRP):
+
+{
+    "TransactionType": "OfferCreate",
+    "Account": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa",
+    "TakerPays": "100000000",
+    "TakerGets": {
+      "currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3",
+      "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb",
+      "value": "1e-15"
+    }
+}
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "OfferCreate", "Account": "rEfeRQwjJgEAgQpHtKCRG7tsdSmv4yjqJa", "TakerPays": "100000000", "TakerGets": {"currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "value": "1e-15"} }'
+
+Purchaser account buys NFT for 100 XRP:
+
+{
+    "TransactionType": "OfferCreate",
+    "Account": "rfWgknJfidjEmeAvJMZpTnj6WtVjDQjNhf",
+    "TakerGets": "100000000",
+    "TakerPays": {
+      "currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3",
+      "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb",
+      "value": "1e-15"
+    }
+}
+$ rippled sign sSECRETXXXXXXXXXXXXXXXXXXXXXX '{"TransactionType": "OfferCreate", "Account": "rfWgknJfidjEmeAvJMZpTnj6WtVjDQjNhf", "TakerGets": "100000000", "TakerPays": {"currency": "212e5fc6a2bbc0df22df1f1a83dfb6c6af5599a3", "issuer": "rPErcAVSGVXxX7iyCsp483tmG7CVzr7sxb", "value": "1e-15"} }'
+
+NFT object IPFS hash:
+QmU7jY9pnxfmzLRjhS87WzVxJeLUz2RhM43Jmt9sSo1jSL
+NFT metadata IPFS hash:
+Qmcc6igFwkSs4jKyGBNEX9VTqU3Sy7X6bpC3BDWCue1ejD
